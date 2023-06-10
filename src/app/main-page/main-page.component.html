@@ -1,0 +1,119 @@
+<div class = "containerForStartingButton" *ngIf = "isLoggedIn == false">
+  <div class = "startingButton">
+    <button type = "button" (click) = "testMethod()">LET'S GET STARTED</button>
+  </div>
+</div>
+
+
+<div class = "container" *ngIf = "isLoggedIn == true">
+  <div class = "optionsLeftBar">
+    <div class = "option" id = "mainpage">
+      Main Page
+    </div>
+    <div class = "option" id = "addcity">
+      Add city
+    </div>
+    <div class = "option" id = "deletecity">
+      Delete city
+    </div>
+    <div class = "option" id = "setmaincity">
+      Set main city
+    </div>
+    <div class = "option" id = "searchcity">
+      Search city
+    </div>
+    <div class = "option" id = "logout">
+      Log out
+    </div>
+  </div>
+
+  <div class = "mainWeather">
+    <div class = "helloUser">
+      Hello User!
+    </div>
+      <div class = "mainInformationBlock">
+        <div class = "city">
+          WARSAW
+        </div>
+        <div class = "icon">
+              SUN
+        </div>
+        <div class = "temperature">
+          20°C
+        </div>
+        <div class = "pressureAndHumidity">
+          <div class = "pressure">
+            <div class = "pressureIcon">
+              PRESSURE
+            </div>
+            <div class = "pressureValue">
+              1000hPA
+            </div>
+          </div>
+          <div class = "humidity">
+            <div class = "humidityIcon">
+              HUMIDITY
+            </div>
+            <div class = "humidityValue">
+              80%
+            </div>
+          </div>
+
+        </div>
+        <div class = "windAndTempMin">
+          <div class = "wind">
+            <div class = "windIcon">
+              WIND
+            </div>
+              <div class = "windValue">
+                20 km/h
+              </div>
+
+          </div>
+          <div class = "tempMin">
+            <div class = "tempMinIcon">
+              MIN
+            </div>
+            <div class = "tempMinValue">
+              15°C
+            </div>
+          </div>
+        </div>
+        <div class = "sunriseAndSunset">
+          <div class = "sunrise">
+            <div class = "sunriseIcon">
+              SUNRISE
+            </div>
+            <div class = "sunriseValue">
+              6:00
+            </div>
+          </div>
+          <div class = "sunset">
+            <div class = "sunsetIcon">
+              SUNSET
+            </div>
+            <div class = "sunsetValue">
+              22:30
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class = weatherRightBar>
+    <div class = "sideWeather">
+      WEATHER 1
+    </div>
+    <div class = "sideWeather">
+      WEATHER 2
+    </div>
+    <div class = "sideWeather">
+      WEATHER 3
+    </div>
+  </div>
+
+</div>
+
+
+
+

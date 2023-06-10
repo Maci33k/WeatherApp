@@ -1,0 +1,9 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  fonts-size: 16px;
+  width: 100%;
+  height: 100vh;
+  background-color: #ADD8E6;
+  display: flex;
+    justify-content: center;
+}
