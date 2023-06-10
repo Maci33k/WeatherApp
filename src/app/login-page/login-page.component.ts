@@ -27,6 +27,7 @@ export class LoginPageComponent {
       this.isLoggedIn = true;
       console.log(this.isLoggedIn);
       this.sharingDataService.data = true;
+      this.sharingDataService.nameData = this.userLogin;
       console.log(this.sharingDataService.data);
       }
     else console.log("Niepoprawne dane");

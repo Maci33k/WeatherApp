@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SharingDataService {
   public data : any;
+  public nameData : any;
 
   constructor() {}
 }

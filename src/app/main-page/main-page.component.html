@@ -29,17 +29,17 @@
 
   <div class = "mainWeather">
     <div class = "helloUser">
-      Hello User!
+      Hello {{login}}! Today's weather: {{type}}
     </div>
       <div class = "mainInformationBlock">
         <div class = "city">
-          WARSAW
+          {{city}}
         </div>
         <div class = "icon">
-              SUN
+              {{type}}
         </div>
         <div class = "temperature">
-          20°C
+          {{temperature}}°C
         </div>
         <div class = "pressureAndHumidity">
           <div class = "pressure">
@@ -47,7 +47,7 @@
               PRESSURE
             </div>
             <div class = "pressureValue">
-              1000hPA
+              {{pressure}} hPa
             </div>
           </div>
           <div class = "humidity">
@@ -55,7 +55,7 @@
               HUMIDITY
             </div>
             <div class = "humidityValue">
-              80%
+              {{humidity}}%
             </div>
           </div>
 
@@ -66,34 +66,34 @@
               WIND
             </div>
               <div class = "windValue">
-                20 km/h
+                {{wind}} km/h
               </div>
 
           </div>
           <div class = "tempMin">
             <div class = "tempMinIcon">
-              MIN
+              Feels like
             </div>
             <div class = "tempMinValue">
-              15°C
+              {{feels_like}}°C
             </div>
           </div>
         </div>
         <div class = "sunriseAndSunset">
           <div class = "sunrise">
             <div class = "sunriseIcon">
-              SUNRISE
+              MIN
             </div>
             <div class = "sunriseValue">
-              6:00
+              {{min}}°C
             </div>
           </div>
           <div class = "sunset">
             <div class = "sunsetIcon">
-              SUNSET
+              MAX
             </div>
             <div class = "sunsetValue">
-              22:30
+              {{max}}°C
             </div>
           </div>
         </div>
