@@ -34,6 +34,14 @@ export class MainPageComponent {
   static usersCity: string = 'Almeria';
   cityName : string = "";
   setMainCityAnnoucement : boolean = false;
+  sideWeather1Options : boolean = false;
+  sideWeather2Options : boolean = false;
+  sideWeather3Options : boolean = false;
+  isSideWeather1Set : boolean = false;
+  isSideWeather2Set : boolean = false;
+  isSideWeather3Set : boolean = false;
+  isSideWeather1SetCommunicate : boolean = false;
+
 
   testMethod() {
     this.isLoggedIn = this.sharingDataService.data;
@@ -102,10 +110,23 @@ export class MainPageComponent {
 
   setMainCitySubmit() {
     MainPageComponent.usersCity = this.cityName;
-
     this.refresh();
     this.setMainCityAnnoucement = true;
   }
+
+  setSideWeather1() {
+    this.sideWeather1Options = true;
+  }
+
+  submitSideWeather1() {
+    this.isSideWeather1SetCommunicate = true;
+    setTimeout(() => {
+      this.sideWeather1Options = false;
+      this.isSideWeather1SetCommunicate = false;
+    },3000);
+  }
+
+
 
 
 

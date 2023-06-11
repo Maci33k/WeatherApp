@@ -28,7 +28,8 @@
   </div>
 
   <div class = "mainWeather" *ngIf = "set_main_city == false && add_city == false
-                                       && delete_city == false && search_city == false">
+                                       && delete_city == false && search_city == false
+                                       && sideWeather1Options == false">
     <img src = "assets/rain.gif" style = "height: 100%; width: 100%;">
     <div class = "helloUser">
       Hello {{login}}! Today's weather: {{type}}
@@ -38,8 +39,7 @@
           {{city}}
         </div>
         <div class = "icon">
-              <img src = "assets/rain.gif" style = "width: 250px; height: 150px;
-                border-radius: 20px;">
+
         </div>
         <div class = "temperature">
           {{temperature}}°C
@@ -111,7 +111,7 @@
 
   <div class = "weatherRightBar" *ngIf = "set_main_city == false && add_city == false
                                        && delete_city == false && search_city == false">
-    <div class = "sideWeather">
+    <div class = "sideWeather" (click) = "setSideWeather1()">
       WEATHER 1
     </div>
     <div class = "sideWeather">
@@ -143,6 +143,24 @@
       <div class = "setMainCityImage">
         <img src = "assets/allgood.gif">
       </div>
+    </div>
+  </div>
+
+  <div class = "sideWeatherMenu" *ngIf = "sideWeather1Options == true">
+    <div class = "upperTag">
+      Set your city
+    </div>
+    <div class = "input">
+      <input type = "text" placeholder="Set city">
+    </div>
+    <div class = "button">
+      <button type = "button" (click) = "submitSideWeather1()">Submit</button>
+    </div>
+    <div class = "Message" *ngIf = "isSideWeather1SetCommunicate == true">
+      One of your side weather fields has been set to
+    </div>
+    <div class = "DeleteButton">
+      <button type = "button">Delete city</button>
     </div>
   </div>
 
