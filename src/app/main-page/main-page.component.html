@@ -7,7 +7,7 @@
 
 <div class = "container" *ngIf = "isLoggedIn == true">
   <div class = "optionsLeftBar">
-    <div class = "option" id = "mainpage">
+    <div class = "option" id = "mainpage" (click) = "displayMainPage()">
       Main Page
     </div>
     <div class = "option" id = "addcity">
@@ -16,7 +16,7 @@
     <div class = "option" id = "deletecity">
       Delete city
     </div>
-    <div class = "option" id = "setmaincity">
+    <div class = "option" id = "setmaincity" (click) = "displaySetMainCity()">
       Set main city
     </div>
     <div class = "option" id = "searchcity">
@@ -27,7 +27,9 @@
     </div>
   </div>
 
-  <div class = "mainWeather">
+  <div class = "mainWeather" *ngIf = "set_main_city == false && add_city == false
+                                       && delete_city == false && search_city == false">
+    <img src = "assets/rain.gif" style = "height: 100%; width: 100%;">
     <div class = "helloUser">
       Hello {{login}}! Today's weather: {{type}}
     </div>
@@ -36,7 +38,8 @@
           {{city}}
         </div>
         <div class = "icon">
-              {{type}}
+              <img src = "assets/rain.gif" style = "width: 250px; height: 150px;
+                border-radius: 20px;">
         </div>
         <div class = "temperature">
           {{temperature}}°C
@@ -44,7 +47,8 @@
         <div class = "pressureAndHumidity">
           <div class = "pressure">
             <div class = "pressureIcon">
-              PRESSURE
+              <img src = "assets/pressure.gif" style = "width: 100px; height: 70px;
+                border-radius: 20px;">
             </div>
             <div class = "pressureValue">
               {{pressure}} hPa
@@ -52,7 +56,8 @@
           </div>
           <div class = "humidity">
             <div class = "humidityIcon">
-              HUMIDITY
+              <img src = "assets/humidity.gif" style = "width: 100px; height: 70px;
+                border-radius: 20px;">
             </div>
             <div class = "humidityValue">
               {{humidity}}%
@@ -63,7 +68,8 @@
         <div class = "windAndTempMin">
           <div class = "wind">
             <div class = "windIcon">
-              WIND
+              <img src = "assets/wind.gif" style = "width: 100px; height: 70px;
+                  border-radius: 20px;">
             </div>
               <div class = "windValue">
                 {{wind}} km/h
@@ -72,7 +78,8 @@
           </div>
           <div class = "tempMin">
             <div class = "tempMinIcon">
-              Feels like
+              <img src = "assets/feelslike.gif" style = "width: 100px; height: 70px;
+                  border-radius: 20px;">
             </div>
             <div class = "tempMinValue">
               {{feels_like}}°C
@@ -82,7 +89,8 @@
         <div class = "sunriseAndSunset">
           <div class = "sunrise">
             <div class = "sunriseIcon">
-              MIN
+              <img src = "assets/cold.gif" style = "width: 100px; height: 70px;
+                  border-radius: 20px;">
             </div>
             <div class = "sunriseValue">
               {{min}}°C
@@ -90,7 +98,8 @@
           </div>
           <div class = "sunset">
             <div class = "sunsetIcon">
-              MAX
+              <img src = "assets/hot.gif" style = "width: 100px; height: 70px;
+                  border-radius: 20px;">
             </div>
             <div class = "sunsetValue">
               {{max}}°C
@@ -100,7 +109,8 @@
       </div>
   </div>
 
-  <div class = weatherRightBar>
+  <div class = "weatherRightBar" *ngIf = "set_main_city == false && add_city == false
+                                       && delete_city == false && search_city == false">
     <div class = "sideWeather">
       WEATHER 1
     </div>
@@ -109,6 +119,30 @@
     </div>
     <div class = "sideWeather">
       WEATHER 3
+    </div>
+  </div>
+
+
+  <div class = "setMainCity" *ngIf = "set_main_city == true">
+
+    <div class = "setMainCityTop">
+      SET YOUR MAIN CITY
+    </div>
+    <div class = "setMainCityInput">
+      <input type = "text" placeholder="Search city" [(ngModel)]="cityName">
+    </div>
+    <div class = "setMainCityButton">
+      <button type = "button" (click) = "setMainCitySubmit()">
+        Submit
+      </button>
+    </div>
+    <div class = "setMainCityAnnouncement" *ngIf = "setMainCityAnnoucement == true">
+      <div class = "setMainCityText">
+        Your main city has been set to {{cityName}}
+      </div>
+      <div class = "setMainCityImage">
+        <img src = "assets/allgood.gif">
+      </div>
     </div>
   </div>
 

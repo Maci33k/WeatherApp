@@ -25,6 +25,7 @@
   width: 100%;
 }
 
+
 .optionsLeftBar {
   position: absolute;
   top: 0;
@@ -42,11 +43,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
 }
 
 .option:hover {
-  background-color: red;
+  background-color: black;
   cursor: pointer;
+  color: white;
 }
 
 .mainWeather {
@@ -188,7 +191,6 @@
 .pressure {
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   float: left;
   order: 1;
 }
@@ -196,7 +198,6 @@
 .pressureIcon {
   height: 100%;
   width: 40%;
-  border: 1px solid white;
   float: left;
   text-align: center;
   display: flex;
@@ -207,7 +208,6 @@
 .pressureValue {
   height: 100%;
   width: 153px;
-  border: 1px solid yellow;
   position: absolute;
   left: 102px;
   text-align: center;
@@ -220,7 +220,6 @@
   display: flex;
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   float: left;
   order: 2;
 }
@@ -228,7 +227,6 @@
 .humidityIcon {
   height: 100%;
   width: 40%;
-  border: 1px solid white;
   float: left;
   text-align: center;
   display: flex;
@@ -239,7 +237,6 @@
 .humidityValue {
   height: 100%;
   width: 153px;
-  border: 1px solid yellow;
   position: absolute;
   left: 358px;
   text-align: center;
@@ -251,7 +248,6 @@
 .wind {
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   float: left;
   order: 1;
 }
@@ -260,7 +256,6 @@
   display: flex;
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   float: left;
   order: 2;
 }
@@ -268,7 +263,6 @@
 .windIcon {
   height: 100%;
   width: 40%;
-  border: 1px solid white;
   float: left;
   text-align: center;
   display: flex;
@@ -279,7 +273,6 @@
 .windValue {
   height: 100%;
   width: 153px;
-  border: 1px solid yellow;
   position: absolute;
   left: 102px;
   text-align: center;
@@ -291,7 +284,6 @@
 .tempMinIcon {
   height: 100%;
   width: 40%;
-  border: 1px solid white;
   float: left;
   text-align: center;
   display: flex;
@@ -302,7 +294,6 @@
 .tempMinValue {
   height: 100%;
   width: 153px;
-  border: 1px solid yellow;
   position: absolute;
   left: 358px;
   text-align: center;
@@ -314,7 +305,6 @@
 .sunrise {
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   float: left;
   order: 1;
 }
@@ -322,7 +312,6 @@
 .sunriseIcon {
   height: 100%;
   width: 40%;
-  border: 1px solid white;
   float: left;
   text-align: center;
   display: flex;
@@ -333,7 +322,6 @@
 .sunriseValue {
   height: 100%;
   width: 153px;
-  border: 1px solid yellow;
   position: absolute;
   left: 102px;
   text-align: center;
@@ -346,7 +334,6 @@
   display: flex;
   width: 50%;
   height: 100%;
-  border: 1px solid red;
   float: left;
   order: 2;
 }
@@ -354,7 +341,6 @@
 .sunsetIcon {
   height: 100%;
   width: 40%;
-  border: 1px solid white;
   float: left;
   text-align: center;
   display: flex;
@@ -365,11 +351,89 @@
 .sunsetValue {
   height: 100%;
   width: 153px;
-  border: 1px solid yellow;
   position: absolute;
   left: 358px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.setMainCityTop {
+  text-align: center;
+  height: 20%;
+  width: 100%;
+  font-size: 30px;
+  color: black;
+  position: absolute;
+  top: 0;
+  left: 100px;
+}
+
+.setMainCityInput {
+  position: absolute;
+  top: 100px;
+  left: 550px;
+}
+
+.setMainCityInput input {
+  height: 50px;
+  width: 200px;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setMainCityButton {
+  position: absolute;
+    top: 100px;
+    left: 760px;
+}
+
+.setMainCityButton button {
+  height: 55px;
+  width: 100px;
+  border-radius: 20px;
+  font-size: 25px;
+}
+
+.setMainCityButton button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.setMainCityAnnouncement {
+  height: 300px;
+  width: 500px;
+  position: relative;
+  top: 50px;
+  left: 70px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setMainCityText {
+  order: 1;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  left: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.setMainCityImage {
+  order: 2;
+  height: 100%;
+  width: 48%;
+  position: absolute;
+  right: 0;
 }
