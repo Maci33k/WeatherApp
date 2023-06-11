@@ -29,8 +29,17 @@
 
   <div class = "mainWeather" *ngIf = "set_main_city == false && add_city == false
                                        && delete_city == false && search_city == false
-                                       && sideWeather1Options == false">
-    <img src = "assets/rain.gif" style = "height: 100%; width: 100%;">
+                                       && sideWeather1Options == false && sideWeather2Options == false
+                                       && sideWeather3Options == false">
+    <div class = "background-clouds" *ngIf = "isItCloudy == true">
+      <img src = "assets/sky-clouds.gif" style = "height: 100%; width: 100%;">
+    </div>
+    <div class = "background-rain" *ngIf = "isItRaining == true">
+      <img src = "assets/rain.gif" style = "height: 100%; width: 100%;">
+    </div>
+    <div class = "background-clear" *ngIf = "isItClear == true">
+      <img src = "assets/clear.gif" style = "height: 100%; width: 100%;">
+    </div>
     <div class = "helloUser">
       Hello {{login}}! Today's weather: {{type}}
     </div>
@@ -112,13 +121,40 @@
   <div class = "weatherRightBar" *ngIf = "set_main_city == false && add_city == false
                                        && delete_city == false && search_city == false">
     <div class = "sideWeather" (click) = "setSideWeather1()">
-      WEATHER 1
+      <div class = "basic" *ngIf = "isSideWeather1Set == false">Set city</div>
+      <div class = "up1">
+        {{SideCity1}}
+      </div>
+      <div class = "middle1">
+
+      </div>
+      <div class = "bottom1">
+        {{temperatureSideCity1}}
+      </div>
     </div>
-    <div class = "sideWeather">
-      WEATHER 2
+    <div class = "sideWeather" (click) = "setSideWeather2()">
+      <div class = "basic" *ngIf = "isSideWeather1Set == false">Set city</div>
+      <div class = "up1">
+        {{SideCity2}}
+      </div>
+      <div class = "middle1">
+
+      </div>
+      <div class = "bottom1">
+        {{temperatureSideCity2}}
+      </div>
     </div>
-    <div class = "sideWeather">
-      WEATHER 3
+    <div class = "sideWeather" (click) = "setSideWeather3()">
+      <div class = "basic" *ngIf = "isSideWeather3Set == false">Set city</div>
+      <div class = "up1">
+        {{SideCity3}}
+      </div>
+      <div class = "middle1">
+
+      </div>
+      <div class = "bottom1">
+        {{temperatureSideCity3}}
+      </div>
     </div>
   </div>
 
@@ -151,13 +187,49 @@
       Set your city
     </div>
     <div class = "input">
-      <input type = "text" placeholder="Set city">
+      <input type = "text" placeholder="Set city" [(ngModel)]="SideCity1">
     </div>
     <div class = "button">
       <button type = "button" (click) = "submitSideWeather1()">Submit</button>
     </div>
     <div class = "Message" *ngIf = "isSideWeather1SetCommunicate == true">
-      One of your side weather fields has been set to
+      One of your side weather fields has been set to {{SideCity1}}
+    </div>
+    <div class = "DeleteButton">
+      <button type = "button">Delete city</button>
+    </div>
+  </div>
+
+  <div class = "sideWeatherMenu" *ngIf = "sideWeather2Options == true">
+    <div class = "upperTag">
+      Set your city
+    </div>
+    <div class = "input">
+      <input type = "text" placeholder="Set city" [(ngModel)]="SideCity2">
+    </div>
+    <div class = "button">
+      <button type = "button" (click) = "submitSideWeather2()">Submit</button>
+    </div>
+    <div class = "Message" *ngIf = "isSideWeather2SetCommunicate == true">
+      One of your side weather fields has been set to {{SideCity2}}
+    </div>
+    <div class = "DeleteButton">
+      <button type = "button">Delete city</button>
+    </div>
+  </div>
+
+  <div class = "sideWeatherMenu" *ngIf = "sideWeather3Options == true">
+    <div class = "upperTag">
+      Set your city
+    </div>
+    <div class = "input">
+      <input type = "text" placeholder="Set city" [(ngModel)]="SideCity3">
+    </div>
+    <div class = "button">
+      <button type = "button" (click) = "submitSideWeather3()">Submit</button>
+    </div>
+    <div class = "Message" *ngIf = "isSideWeather3SetCommunicate == true">
+      One of your side weather fields has been set to {{SideCity3}}
     </div>
     <div class = "DeleteButton">
       <button type = "button">Delete city</button>

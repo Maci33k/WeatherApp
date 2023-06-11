@@ -41,6 +41,29 @@ export class MainPageComponent {
   isSideWeather2Set : boolean = false;
   isSideWeather3Set : boolean = false;
   isSideWeather1SetCommunicate : boolean = false;
+  isSideWeather2SetCommunicate : boolean = false;
+  isSideWeather3SetCommunicate : boolean = false;
+
+  temperatureSideCity1 : any;
+  SideCity1 : any;
+  temperatureSideCity2 : any;
+  SideCity2 : any;
+  temperatureSideCity3 : any;
+  SideCity3 : any;
+
+  isItCloudy : any = false;
+  isItClear : any = false;
+  isItRaining : any = false;
+
+  weatherVerify() {
+    this.isItCloudy = this.weatherData?.weather[0]?.description.includes("cloud");
+    this.isItClear = this.weatherData?.weather[0]?.description.includes("clear");
+    this.isItRaining = this.weatherData?.weather[0]?.description.includes("rain");
+    console.log("clouds: " + this.isItCloudy);
+    console.log("cler: " + this.isItClear);
+    console.log("rain: " + this.isItRaining);
+  }
+
 
 
   testMethod() {
@@ -68,6 +91,7 @@ export class MainPageComponent {
       this.max = this.weatherData?.main?.temp_max;
       this.max = (this.max - 32)/1.8;
       this.max = this.max.toFixed(0);
+      this.weatherVerify();
       console.log(this.max);
     }, 2000);
   }
@@ -92,6 +116,7 @@ export class MainPageComponent {
           this.max = this.weatherData?.main?.temp_max;
           this.max = (this.max - 32)/1.8;
           this.max = this.max.toFixed(0);
+          this.weatherVerify();
           console.log(this.max);
         }, 2000);
   }
@@ -106,6 +131,7 @@ export class MainPageComponent {
     this.delete_city = false;
     this.search_city = false;
     this.setMainCityAnnoucement = false;
+    this.sideWeather1Options = false;
   }
 
   setMainCitySubmit() {
@@ -120,11 +146,65 @@ export class MainPageComponent {
 
   submitSideWeather1() {
     this.isSideWeather1SetCommunicate = true;
+    this.isSideWeather1Set = true;
+    MainPageComponent.usersCity = this.SideCity1;
+    this.getWeatherData(MainPageComponent.usersCity);
+
+
     setTimeout(() => {
+      this.temperatureSideCity1 = this.weatherData?.main?.temp;
+      this.temperatureSideCity1 = (this.temperatureSideCity1 - 32)/1.8;
+      this.temperatureSideCity1 = this.temperatureSideCity1.toFixed(0);
+      this.SideCity1 = this.weatherData?.name;
       this.sideWeather1Options = false;
       this.isSideWeather1SetCommunicate = false;
+      this.weatherVerify();
     },3000);
   }
+
+  setSideWeather2() {
+      this.sideWeather2Options = true;
+    }
+
+  submitSideWeather2() {
+      this.isSideWeather2SetCommunicate = true;
+      this.isSideWeather2Set = true;
+      MainPageComponent.usersCity = this.SideCity2;
+      this.getWeatherData(MainPageComponent.usersCity);
+
+
+      setTimeout(() => {
+        this.temperatureSideCity2 = this.weatherData?.main?.temp;
+        this.temperatureSideCity2 = (this.temperatureSideCity2 - 32)/1.8;
+        this.temperatureSideCity2 = this.temperatureSideCity2.toFixed(0);
+        this.SideCity2 = this.weatherData?.name;
+        this.sideWeather2Options = false;
+        this.isSideWeather2SetCommunicate = false;
+        this.weatherVerify();
+      },3000);
+    }
+
+    setSideWeather3() {
+          this.sideWeather3Options = true;
+        }
+
+    submitSideWeather3() {
+          this.isSideWeather3SetCommunicate = true;
+          this.isSideWeather3Set = true;
+          MainPageComponent.usersCity = this.SideCity3;
+          this.getWeatherData(MainPageComponent.usersCity);
+
+
+          setTimeout(() => {
+            this.temperatureSideCity3 = this.weatherData?.main?.temp;
+            this.temperatureSideCity3 = (this.temperatureSideCity3 - 32)/1.8;
+            this.temperatureSideCity3 = this.temperatureSideCity3.toFixed(0);
+            this.SideCity3 = this.weatherData?.name;
+            this.sideWeather3Options = false;
+            this.isSideWeather3SetCommunicate = false;
+            this.weatherVerify();
+          },3000);
+        }
 
 
 
