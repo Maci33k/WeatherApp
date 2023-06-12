@@ -10,12 +10,6 @@
     <div class = "option" id = "mainpage" (click) = "displayMainPage()">
       Main Page
     </div>
-    <div class = "option" id = "addcity">
-      Add city
-    </div>
-    <div class = "option" id = "deletecity">
-      Delete city
-    </div>
     <div class = "option" id = "setmaincity" (click) = "displaySetMainCity()">
       Set main city
     </div>
@@ -48,7 +42,15 @@
           {{city}}
         </div>
         <div class = "icon">
-
+          <div class = "sun-icon" *ngIf = "isItClear == true">
+            <img src = "assets/sun.gif" style = "height: 130px; width: 230px;">
+          </div>
+          <div class = "cloud-icon" *ngIf = "isItCloudy == true">
+            <img src = "assets/cloud.gif" style = "height: 130px; width: 230px;">
+          </div>
+          <div class = "rain-icon" *ngIf = "isItRaining == true">
+            <img src = "assets/rainingIcon.gif" style = "height: 130px; width: 230px;">
+          </div>
         </div>
         <div class = "temperature">
           {{temperature}}°C
@@ -122,38 +124,62 @@
                                        && delete_city == false && search_city == false">
     <div class = "sideWeather" (click) = "setSideWeather1()">
       <div class = "basic" *ngIf = "isSideWeather1Set == false">Set city</div>
-      <div class = "up1">
+      <div class = "up1" *ngIf = "isSideWeather1Set == true">
         {{SideCity1}}
       </div>
-      <div class = "middle1">
-
+      <div class = "middle1" *ngIf = "isSideWeather1Set == true">
+        <div class = "weather1Sun" *ngIf = "weather1IsItClear == true">
+          <img src = "assets/sunIcon.png" style = "height: 75px; width: 75px;">
+        </div>
+        <div class = "weather1Cloud" *ngIf = "weather1IsItCloudy == true">
+          <img src = "assets/cloudsicon.png" style = "height: 75px; width: 75px;">
+        </div>
+        <div class = "weather1Rain" *ngIf = "weather1IsItRaining == true">
+          <img src = "assets/rainIcon.png" style = "height: 75px; width: 75px;">
+        </div>
       </div>
-      <div class = "bottom1">
-        {{temperatureSideCity1}}
+      <div class = "bottom1" *ngIf = "isSideWeather1Set == true">
+        {{temperatureSideCity1}}°C
       </div>
     </div>
     <div class = "sideWeather" (click) = "setSideWeather2()">
-      <div class = "basic" *ngIf = "isSideWeather1Set == false">Set city</div>
-      <div class = "up1">
+      <div class = "basic" *ngIf = "isSideWeather2Set == false">Set city</div>
+      <div class = "up1" *ngIf = "isSideWeather2Set == true">
         {{SideCity2}}
       </div>
-      <div class = "middle1">
-
+      <div class = "middle1" *ngIf = "isSideWeather2Set == true">
+        <div class = "weather2Sun" *ngIf = "weather2IsItClear == true">
+          <img src = "assets/sunIcon.png" style = "height: 75px; width: 75px;">
+        </div>
+        <div class = "weather2Cloud" *ngIf = "weather2IsItCloudy == true">
+          <img src = "assets/cloudsicon.png" style = "height: 75px; width: 75px;">
+        </div>
+        <div class = "weather2Rain" *ngIf = "weather2IsItRaining == true">
+          <img src = "assets/rainIcon.png" style = "height: 75px; width: 75px;">
+        </div>
       </div>
-      <div class = "bottom1">
-        {{temperatureSideCity2}}
+      <div class = "bottom1" *ngIf = "isSideWeather2Set == true">
+        {{temperatureSideCity2}}°C
       </div>
     </div>
     <div class = "sideWeather" (click) = "setSideWeather3()">
       <div class = "basic" *ngIf = "isSideWeather3Set == false">Set city</div>
-      <div class = "up1">
+      <div class = "up1" *ngIf = "isSideWeather3Set == true">
         {{SideCity3}}
       </div>
-      <div class = "middle1">
-
+      <div class = "middle1" *ngIf = "isSideWeather3Set == true">
+        <div class = "weather3Sun" *ngIf = "weather3IsItClear == true">
+          <img src = "assets/sunIcon.png" style = "height: 75px; width: 75px;">
+        </div>
+        <div class = "weather3Cloud" *ngIf = "weather3IsItCloudy == true">
+          <img src = "assets/cloudsicon.png" style = "height: 75px; width: 75px;">
+        </div>
+        <div class = "weather3Rain" *ngIf = "weather3IsItRaining == true">
+          <img src = "assets/rainIcon.png" style = "height: 75px; width: 75px;">
+        </div>
       </div>
-      <div class = "bottom1">
-        {{temperatureSideCity3}}
+      <div class = "bottom1" *ngIf = "isSideWeather3Set == true">
+        {{temperatureSideCity3}}°C
       </div>
     </div>
   </div>

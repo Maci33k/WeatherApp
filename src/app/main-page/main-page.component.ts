@@ -55,6 +55,18 @@ export class MainPageComponent {
   isItClear : any = false;
   isItRaining : any = false;
 
+  weather1IsItCloudy : any = false;
+  weather1IsItClear : any = false;
+  weather1IsItRaining : any = false;
+
+   weather2IsItCloudy : any = false;
+    weather2IsItClear : any = false;
+    weather2IsItRaining : any = false;
+
+     weather3IsItCloudy : any = false;
+      weather3IsItClear : any = false;
+      weather3IsItRaining : any = false;
+
   weatherVerify() {
     this.isItCloudy = this.weatherData?.weather[0]?.description.includes("cloud");
     this.isItClear = this.weatherData?.weather[0]?.description.includes("clear");
@@ -62,6 +74,24 @@ export class MainPageComponent {
     console.log("clouds: " + this.isItCloudy);
     console.log("cler: " + this.isItClear);
     console.log("rain: " + this.isItRaining);
+  }
+
+  sideWeather1Verify() {
+    this.weather1IsItCloudy = this.weatherData?.weather[0]?.description.includes("cloud");
+    this.weather1IsItClear = this.weatherData?.weather[0]?.description.includes("clear");
+    this.weather1IsItRaining = this.weatherData?.weather[0]?.description.includes("rain");
+  }
+
+  sideWeather2Verify() {
+    this.weather2IsItCloudy = this.weatherData?.weather[0]?.description.includes("cloud");
+    this.weather2IsItClear = this.weatherData?.weather[0]?.description.includes("clear");
+    this.weather2IsItRaining = this.weatherData?.weather[0]?.description.includes("rain");
+  }
+
+  sideWeather3Verify() {
+    this.weather3IsItCloudy = this.weatherData?.weather[0]?.description.includes("cloud");
+    this.weather3IsItClear = this.weatherData?.weather[0]?.description.includes("clear");
+    this.weather3IsItRaining = this.weatherData?.weather[0]?.description.includes("rain");
   }
 
 
@@ -132,12 +162,17 @@ export class MainPageComponent {
     this.search_city = false;
     this.setMainCityAnnoucement = false;
     this.sideWeather1Options = false;
+    this.sideWeather2Options = false;
+    this.sideWeather3Options = false;
   }
 
   setMainCitySubmit() {
     MainPageComponent.usersCity = this.cityName;
     this.refresh();
     this.setMainCityAnnoucement = true;
+    setTimeout(() => {
+      this.set_main_city = false;
+    },3000);
   }
 
   setSideWeather1() {
@@ -158,7 +193,7 @@ export class MainPageComponent {
       this.SideCity1 = this.weatherData?.name;
       this.sideWeather1Options = false;
       this.isSideWeather1SetCommunicate = false;
-      this.weatherVerify();
+      this.sideWeather1Verify();
     },3000);
   }
 
@@ -180,7 +215,7 @@ export class MainPageComponent {
         this.SideCity2 = this.weatherData?.name;
         this.sideWeather2Options = false;
         this.isSideWeather2SetCommunicate = false;
-        this.weatherVerify();
+        this.sideWeather2Verify();
       },3000);
     }
 
@@ -202,7 +237,7 @@ export class MainPageComponent {
             this.SideCity3 = this.weatherData?.name;
             this.sideWeather3Options = false;
             this.isSideWeather3SetCommunicate = false;
-            this.weatherVerify();
+            this.sideWeather3Verify();
           },3000);
         }
 
