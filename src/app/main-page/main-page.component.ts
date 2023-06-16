@@ -67,6 +67,16 @@ export class MainPageComponent {
       weather3IsItClear : any = false;
       weather3IsItRaining : any = false;
 
+
+   search_city_temperature : any;
+   search_city_description : any;
+   search_city_wind : any;
+   search_city_max : any;
+   search_city_min : any;
+   search_city_humidity : any;
+   searched_city : any;
+   isSearchedCitySubmitted : boolean = false;
+
   weatherVerify() {
     this.isItCloudy = this.weatherData?.weather[0]?.description.includes("cloud");
     this.isItClear = this.weatherData?.weather[0]?.description.includes("clear");
@@ -99,6 +109,26 @@ export class MainPageComponent {
   testMethod() {
     this.isLoggedIn = this.sharingDataService.data;
     this.login = this.sharingDataService.nameData;
+  }
+
+  setSearchedWeatherData() {
+    MainPageComponent.usersCity = this.searched_city;
+    this.getWeatherData(MainPageComponent.usersCity);
+    setTimeout(() => {
+          this.search_city_temperature = this.weatherData?.main?.temp;
+          this.search_city_temperature = (this.search_city_temperature - 32)/1.8;
+          this.search_city_temperature = this.search_city_temperature.toFixed(0);
+          this.searched_city = this.weatherData?.name;
+          this.search_city_description = this.weatherData?.weather[0]?.description;
+          this.search_city_humidity = this.weatherData?.main?.humidity;
+          this.search_city_wind = this.weatherData?.wind?.speed;
+          this.search_city_min = this.weatherData?.main?.temp_min;
+          this.search_city_min = (this.search_city_min - 32)/1.8;
+          this.search_city_min = this.search_city_min.toFixed(0);
+          this.search_city_max = this.weatherData?.main?.temp_max;
+          this.search_city_max = (this.search_city_max - 32)/1.8;
+          this.search_city_max = this.search_city_max.toFixed(0);
+        }, 2000);
   }
 
   ngOnInit() {
@@ -172,6 +202,7 @@ export class MainPageComponent {
     this.setMainCityAnnoucement = true;
     setTimeout(() => {
       this.set_main_city = false;
+      this.setMainCityAnnoucement = false;
     },3000);
   }
 
@@ -240,6 +271,39 @@ export class MainPageComponent {
             this.sideWeather3Verify();
           },3000);
         }
+
+  DisplaySearchCity() {
+    this.search_city = true;
+  }
+
+  searchCitySubmit() {
+    MainPageComponent.usersCity = this.searched_city;
+    this.setSearchedWeatherData();
+     setTimeout(() => {
+        this.isSearchedCitySubmitted = true;
+     },2000);
+  }
+
+deleteCity1() {
+  this.temperatureSideCity1 = null;
+  this.SideCity1 = null;
+  this.isSideWeather1SetCommunicate = false;
+  this.isSideWeather1Set = false;
+}
+
+deleteCity2() {
+  this.temperatureSideCity2 = null;
+  this.SideCity2 = null;
+  this.isSideWeather2SetCommunicate = false;
+  this.isSideWeather2Set = false;
+}
+
+deleteCity3() {
+  this.temperatureSideCity3 = null;
+  this.SideCity3 = null;
+  this.isSideWeather3SetCommunicate = false;
+  this.isSideWeather3Set = false;
+}
 
 
 

@@ -603,3 +603,35 @@
  border-radius: 20px;
 }
 
+.rainingIcon {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   border-radius: 20px;
+}
+
+
+
+.searchCityMenu input {
+  position: absolute;
+  top: 0;
+  height: 50px;
+  width: 200px;
+  border-radius: 20px;
+}
+
+.searchCityMenu button {
+  position: absolute;
+  top: 0;
+  height: 50px;
+  width: 70px;
+  border-radius: 20px;
+  right: 320px;
+}
+
+.searchCityInformations {
+  padding: 5px;
+  font-size: 25px;
+  color: white;
+}

@@ -13,18 +13,18 @@
     <div class = "option" id = "setmaincity" (click) = "displaySetMainCity()">
       Set main city
     </div>
-    <div class = "option" id = "searchcity">
+    <div class = "option" id = "searchcity" (click) = "DisplaySearchCity()">
       Search city
     </div>
-    <div class = "option" id = "logout">
-      Log out
-    </div>
+
   </div>
 
   <div class = "mainWeather" *ngIf = "set_main_city == false && add_city == false
                                        && delete_city == false && search_city == false
                                        && sideWeather1Options == false && sideWeather2Options == false
                                        && sideWeather3Options == false">
+
+
     <div class = "background-clouds" *ngIf = "isItCloudy == true">
       <img src = "assets/sky-clouds.gif" style = "height: 100%; width: 100%;">
     </div>
@@ -100,7 +100,7 @@
         <div class = "sunriseAndSunset">
           <div class = "sunrise">
             <div class = "sunriseIcon">
-              <img src = "assets/cold.gif" style = "width: 100px; height: 70px;
+              <img src = "assets/mintempe.jpg" style = "width: 100px; height: 70px;
                   border-radius: 20px;">
             </div>
             <div class = "sunriseValue">
@@ -109,7 +109,7 @@
           </div>
           <div class = "sunset">
             <div class = "sunsetIcon">
-              <img src = "assets/hot.gif" style = "width: 100px; height: 70px;
+              <img src = "assets/maxtempe.jpg" style = "width: 100px; height: 70px;
                   border-radius: 20px;">
             </div>
             <div class = "sunsetValue">
@@ -208,6 +208,37 @@
     </div>
   </div>
 
+  <div class = "searchCityMenu" *ngIf = "search_city == true">
+    <input type = "text" placeholder="Search city" [(ngModel)]="searched_city">
+    <button type = "button" (click) = "searchCitySubmit()">
+      Submit
+    </button>
+    <div class = "searchCityInformations" *ngIf = "isSearchedCitySubmitted == true">
+      <div class = "searchCityInformations">
+        {{searched_city}}
+      </div>
+      <div class = "searchCityInformations">
+        Temperature: {{search_city_temperature}}°C
+      </div>
+      <div class = "searchCityInformations">
+         {{search_city_description}}
+      </div>
+      <div class = "searchCityInformations">
+        WIND: {{search_city_wind}} km/h
+      </div>
+      <div class = "searchCityInformations">
+        TEMP_MIN: {{search_city_min}}°C
+      </div>
+      <div class = "searchCityInformations">
+        TEMP_MAX: {{search_city_max}}°C
+      </div>
+      <div class = "searchCityInformations">
+        HUMIDITY: {{search_city_humidity}}%
+      </div>
+
+    </div>
+  </div>
+
   <div class = "sideWeatherMenu" *ngIf = "sideWeather1Options == true">
     <div class = "upperTag">
       Set your city
@@ -222,7 +253,7 @@
       One of your side weather fields has been set to {{SideCity1}}
     </div>
     <div class = "DeleteButton">
-      <button type = "button">Delete city</button>
+      <button type = "button" (click) = "deleteCity1()">Delete city</button>
     </div>
   </div>
 
@@ -240,7 +271,7 @@
       One of your side weather fields has been set to {{SideCity2}}
     </div>
     <div class = "DeleteButton">
-      <button type = "button">Delete city</button>
+      <button type = "button" (click) = "deleteCity2()">Delete city</button>
     </div>
   </div>
 
@@ -258,7 +289,7 @@
       One of your side weather fields has been set to {{SideCity3}}
     </div>
     <div class = "DeleteButton">
-      <button type = "button">Delete city</button>
+      <button type = "button" (click) = "deleteCity3()">Delete city</button>
     </div>
   </div>
 

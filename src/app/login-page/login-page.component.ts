@@ -14,8 +14,8 @@ export class LoginPageComponent {
   }
 
 
-  correctLogin: string = "";
-  correctPassword: string = "";
+  correctLogin: string = "Adam";
+  correctPassword: string = "adamos";
   userLogin: string = "";
   userPassword: string = "";
   public isLoggedIn: boolean = false;
@@ -29,6 +29,7 @@ export class LoginPageComponent {
       this.sharingDataService.data = true;
       this.sharingDataService.nameData = this.userLogin;
       console.log(this.sharingDataService.data);
+
       }
     else console.log("Niepoprawne dane");
   }
