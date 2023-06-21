@@ -5,8 +5,15 @@
 }
 
 .startingButton button {
-  height: 50px;
-  width: 100px;
+  height: 100px;
+  width: 200px;
+  border-radius: 20px;
+}
+
+.startingButton button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 .containerForStartingButton {
@@ -628,6 +635,12 @@
   width: 70px;
   border-radius: 20px;
   right: 320px;
+}
+
+.searchCityMenu button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 .searchCityInformations {

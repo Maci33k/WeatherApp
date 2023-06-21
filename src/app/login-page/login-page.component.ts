@@ -14,8 +14,8 @@ export class LoginPageComponent {
   }
 
 
-  correctLogin: string = "Adam";
-  correctPassword: string = "adamos";
+  correctLogin: string = "Maciek";
+  correctPassword: string = "12345";
   userLogin: string = "";
   userPassword: string = "";
   public isLoggedIn: boolean = false;

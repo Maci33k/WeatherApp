@@ -3,6 +3,8 @@ import { LoginPageComponent } from 'src/app/login-page/login-page.component';
 import { SharingDataService } from 'src/app/sharing-data.service';
 import { WeatherService } from 'src/app/weather.service';
 import { WeatherData } from 'src/app/models/weather.model';
+import { DataService } from 'src/app/data-service.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,9 +14,18 @@ import { WeatherData } from 'src/app/models/weather.model';
 })
 export class MainPageComponent {
 
-  constructor(private sharingDataService : SharingDataService, private weatherService : WeatherService) {
+  constructor(private sharingDataService : SharingDataService, private weatherService : WeatherService
+  , private dataService: DataService, private http: HttpClient) {
 
   }
+  numer : any = 0;
+  UserData : any;
+  jakiesdanedotestow : any;
+  allDataFromDB : any;
+  mainCityFromDB : string = "";
+  sideCity1FromDB : string = "";
+  sideCity2FromDB : string = "";
+  sideCity3FromDB : string = "";
   isLoggedIn : any = this.sharingDataService.data;
   weatherData?: WeatherData;
   temperature : any;
@@ -132,28 +143,91 @@ export class MainPageComponent {
   }
 
   ngOnInit() {
-    this.getWeatherData(MainPageComponent.usersCity);
+   this.dataService.getAllData().subscribe((res)=>{
+    this.allDataFromDB = JSON.stringify(res);
+    this.UserData = res.data[0];
+    for(let i = 0; i < this.allDataFromDB.length; i++) {
+      if(this.allDataFromDB[i] == '"')
+        this.numer++;
+      if(this.numer == 17 && this.allDataFromDB[i] != '"')
+        this.mainCityFromDB = this.mainCityFromDB.concat(this.allDataFromDB[i]);
+      if(this.numer == 21 && this.allDataFromDB[i] != '"')
+        this.sideCity1FromDB = this.sideCity1FromDB.concat(this.allDataFromDB[i]);
+      if(this.numer == 25 && this.allDataFromDB[i] != '"')
+              this.sideCity2FromDB = this.sideCity2FromDB.concat(this.allDataFromDB[i]);
+      if(this.numer == 29 && this.allDataFromDB[i] != '"')
+                    this.sideCity3FromDB = this.sideCity3FromDB.concat(this.allDataFromDB[i]);
+
+    }
+      MainPageComponent.usersCity = this.mainCityFromDB;
+      console.log("MainCity "+MainPageComponent.usersCity);
+      this.getWeatherData(MainPageComponent.usersCity);
+      setTimeout(() => {
+            this.temperature = this.weatherData?.main?.temp;
+            this.temperature = (this.temperature - 32)/1.8;
+            this.temperature = this.temperature.toFixed(0);
+            this.city = this.weatherData?.name;
+            this.type = this.weatherData?.weather[0]?.description;
+            this.pressure = this.weatherData?.main?.pressure;
+            this.humidity = this.weatherData?.main?.humidity;
+            this.wind = this.weatherData?.wind?.speed;
+            this.min = this.weatherData?.main?.temp_min;
+            this.min = (this.min - 32)/1.8;
+            this.min = this.min.toFixed(0);
+            this.feels_like = this.weatherData?.main?.feels_like;
+            this.feels_like = (this.feels_like - 32)/1.8;
+            this.feels_like = this.feels_like.toFixed(0);
+            this.max = this.weatherData?.main?.temp_max;
+            this.max = (this.max - 32)/1.8;
+            this.max = this.max.toFixed(0);
+            this.weatherVerify();
+            console.log(this.max);
+            MainPageComponent.usersCity = this.sideCity1FromDB;
+            this.getWeatherData(MainPageComponent.usersCity);
+          }, 1000);
+
     setTimeout(() => {
-      this.temperature = this.weatherData?.main?.temp;
-      this.temperature = (this.temperature - 32)/1.8;
-      this.temperature = this.temperature.toFixed(0);
-      this.city = this.weatherData?.name;
-      this.type = this.weatherData?.weather[0]?.description;
-      this.pressure = this.weatherData?.main?.pressure;
-      this.humidity = this.weatherData?.main?.humidity;
-      this.wind = this.weatherData?.wind?.speed;
-      this.min = this.weatherData?.main?.temp_min;
-      this.min = (this.min - 32)/1.8;
-      this.min = this.min.toFixed(0);
-      this.feels_like = this.weatherData?.main?.feels_like;
-      this.feels_like = (this.feels_like - 32)/1.8;
-      this.feels_like = this.feels_like.toFixed(0);
-      this.max = this.weatherData?.main?.temp_max;
-      this.max = (this.max - 32)/1.8;
-      this.max = this.max.toFixed(0);
-      this.weatherVerify();
-      console.log(this.max);
+           this.temperatureSideCity1 = this.weatherData?.main?.temp;
+           this.temperatureSideCity1 = (this.temperatureSideCity1 - 32)/1.8;
+           this.temperatureSideCity1 = this.temperatureSideCity1.toFixed(0);
+           this.SideCity1 = this.weatherData?.name;
+           this.sideWeather1Options = false;
+           this.isSideWeather1SetCommunicate = false;
+           this.sideWeather1Verify();
+           this.isSideWeather1Set = true;
+           MainPageComponent.usersCity = this.sideCity2FromDB;
+           this.getWeatherData(MainPageComponent.usersCity);
     }, 2000);
+
+    setTimeout(() => {
+               this.temperatureSideCity2 = this.weatherData?.main?.temp;
+               this.temperatureSideCity2 = (this.temperatureSideCity2 - 32)/1.8;
+               this.temperatureSideCity2 = this.temperatureSideCity2.toFixed(0);
+               this.SideCity2 = this.weatherData?.name;
+               this.sideWeather2Options = false;
+               this.isSideWeather2SetCommunicate = false;
+               this.sideWeather2Verify();
+               this.isSideWeather2Set = true;
+               MainPageComponent.usersCity = this.sideCity3FromDB;
+               this.getWeatherData(MainPageComponent.usersCity);
+        }, 3000);
+
+        setTimeout(() => {
+                       this.temperatureSideCity3 = this.weatherData?.main?.temp;
+                       this.temperatureSideCity3 = (this.temperatureSideCity3 - 32)/1.8;
+                       this.temperatureSideCity3 = this.temperatureSideCity3.toFixed(0);
+                       this.SideCity3 = this.weatherData?.name;
+                       this.sideWeather3Options = false;
+                       this.isSideWeather3SetCommunicate = false;
+                       this.sideWeather3Verify();
+                       this.isSideWeather3Set = true;
+                }, 4000);
+
+
+
+   })
+
+
   }
 
   refresh() {
@@ -304,7 +378,6 @@ deleteCity3() {
   this.isSideWeather3SetCommunicate = false;
   this.isSideWeather3Set = false;
 }
-
 
 
 
